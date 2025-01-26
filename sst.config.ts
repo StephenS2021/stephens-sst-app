@@ -8,12 +8,12 @@ export default {
       region: "us-east-1",
     };
   },
-  stacks(app) {
-    app.stack(function Site({ stack }) {
+  stacks(app) { // app variable is passed by SST when it initializes the project and runs configuration
+    app.stack(function Site({ stack }) { // stack represents a CloudFormation stack created by SST
       const site = new NextjsSite(stack, "site");
 
       stack.addOutputs({
-        SiteUrl: site.url,
+        SiteUrl: site.url, // outputs url of the deployed app
       });
     });
   },
